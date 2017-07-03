@@ -1,0 +1,1 @@
+include ':app', ':navigationtabbar', ':navigationtabbar-1.2.4'

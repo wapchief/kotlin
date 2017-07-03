@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!-- 自定义ActionBar -->
+    <style name="me_action_bar"
+        parent="@android:style/Widget.Holo.Light.ActionBar">
+        <!-- 更改ActionBar背景 -->
+        <item name="android:background">@android:color/white</item>
+
+    </style>
+
+    <!-- 自定义Activity主题 窗口样式 -->
+    <style name="ActivityTheme_Light"
+        parent="android:Theme.Holo.Light">
+
+        <item name="android:actionBarStyle">@style/me_action_bar</item>
+    </style>
+</resources>
