@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment1.*
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.fragment1.view.*
+import java.util.*
 
 
 /**

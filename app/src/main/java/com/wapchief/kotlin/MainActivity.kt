@@ -14,6 +14,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.action_bar.*
 import kotlinx.android.synthetic.main.main_tablayout.*
+import kotlinx.android.synthetic.main.main_header.*
 import android.graphics.Color.parseColor
 import android.os.Build
 import android.support.annotation.RequiresApi
@@ -26,6 +27,7 @@ import android.support.v4.view.PagerTabStrip
 import android.support.v4.view.ViewPager
 import android.support.v7.view.SupportActionModeWrapper
 import android.view.View
+import java.util.*
 
 
 class MainActivity : FragmentActivity() {
@@ -35,9 +37,9 @@ class MainActivity : FragmentActivity() {
         initView()
 
     }
+
     /*初始化相关*/
-    private fun initView(){
-        setActionBarLayout(R.layout.action_bar)
+    private fun initView() {
         initFragment()
         initOnClick()
     }
@@ -48,10 +50,7 @@ class MainActivity : FragmentActivity() {
         fragments.add(Fragment1())
         fragments.add(Fragment1());
         fragments.add(Fragment1());
-//        FragAdapter adapter = new FragAdapter(getSupportFragmentManager(), fragments);
-//        var fm :FragmentManager = supportFragmentManager
-        val fragmentList = listOf<Fragment>(Fragment1(),Fragment1(), Fragment1() )
-        vp.adapter=viewPagerAdapter(supportFragmentManager,fragments)
+        vp.adapter = viewPagerAdapter(supportFragmentManager, fragments)
         //为viewpager设置页面滑动监听
         vp.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -86,10 +85,11 @@ class MainActivity : FragmentActivity() {
         })
 
 
-}
+    }
 
     /*监听*/
-    private fun initOnClick(){
+    private fun initOnClick() {
+        /*关联选择器*/
         tab1.setOnClickListener {
             vp.setCurrentItem(0)
             initTabLayout(tab1_tv, tab1_v)
@@ -108,41 +108,26 @@ class MainActivity : FragmentActivity() {
             clearTabLayout(tab2_tv, tab2_v)
             clearTabLayout(tab1_tv, tab1_v)
         }
-        /*选择*/
-        bar_options.setOnClickListener {
-
+        header_an.setOnClickListener {
+            header_1.visibility = View.GONE
+            header_2.visibility = View.VISIBLE
+            header_an.visibility = View.GONE
         }
     }
 
     /*初始化tab标签*/
-    private fun initTabLayout(tv: TextView,tv2: TextView) {
+    private fun initTabLayout(tv: TextView, tv2: TextView) {
         tv.setTextColor(resources.getColor(R.color.tab_select))
         tv2.setBackgroundColor(resources.getColor(R.color.tab_select))
     }
+
     /*重置tab标签颜色*/
-    private fun clearTabLayout(tv: TextView,tv2: TextView){
+    private fun clearTabLayout(tv: TextView, tv2: TextView) {
         tv.setTextColor(resources.getColor(R.color.tab_clear))
         tv2.setBackgroundColor(Color.WHITE)
     }
-    /*设置ActionBar*/
-    private fun setActionBarLayout(layoutId: Int) {
-        // TODO Auto-generated method stub
-        val actionBar = actionBar
-        if (null != actionBar) {
-            actionBar.title=""
-            actionBar.setDisplayShowHomeEnabled(false)
-            actionBar.setDisplayShowCustomEnabled(true)
 
-            val inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val v = inflater.inflate(layoutId, null)
-            val lp= ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,ActionBar.LayoutParams.MATCH_PARENT)
-            actionBar.setCustomView(v,lp)
-
-        }
-
-    }
-
-    //继承 FragmentPagerAdapter 创建适配器，利用主构造函数传值
+    //继承 FragmentPagerAdapter 创建适配器
     class viewPagerAdapter(fm: FragmentManager?, var list: List<Fragment>) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
             return list.get(position)

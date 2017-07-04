@@ -24,6 +24,7 @@
         android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/header_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -34,18 +35,23 @@
         android:maxLines="3"
         android:textSize="14sp" />
         <TextView
+            android:id="@+id/header_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:visibility="gone"
             android:gravity="center_horizontal"
             android:text="青年作家\n
 网络文学写手\n
-著有《没有名字的书》"
+著有《没有名字的书》\n
+个人公众号：\n
+个人微信："
             android:textSize="14sp" />
 
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/header_an"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

@@ -28,10 +28,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    //网络请求
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    //recyclerView
-    compile 'com.android.support:recyclerview-v7:25.0.0'
     //折叠控件
     compile 'com.github.cpoopc:scrollablelayoutlib:1.0.1'
     compile project(':navigationtabbar-1.2.4')
