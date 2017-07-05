@@ -35,7 +35,6 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
-
     }
 
     /*初始化相关*/
@@ -60,15 +59,12 @@ class MainActivity : FragmentActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-                //判断滑动后选择的页面设置相应的RadioButton被选中
                 when (position) {
-                //这里的btn_one two the 分别是布局中的三个RadioButton的id，直接调用其方法进行设置
                     0 -> {
                         initTabLayout(tab1_tv, tab1_v)
                         clearTabLayout(tab2_tv, tab2_v)
                         clearTabLayout(tab3_tv, tab3_v)
                     }
-                //当只是写btn_one.isChecked获取的是它的选中状态，如果让它 =true 就会默认调用setChecked()方法进行改变状态
                     1 -> {
                         initTabLayout(tab2_tv, tab2_v)
                         clearTabLayout(tab1_tv, tab1_v)
