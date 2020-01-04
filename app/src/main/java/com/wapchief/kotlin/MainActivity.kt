@@ -1,36 +1,23 @@
 package com.wapchief.kotlin
 
-import android.app.ActionBar
-import android.app.Activity
-import android.content.Context
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.action_bar.*
-import kotlinx.android.synthetic.main.main_tablayout.*
-import kotlinx.android.synthetic.main.main_header.*
-import android.graphics.Color.parseColor
-import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.PagerTabStrip
-import android.support.v4.view.ViewPager
-import android.support.v7.view.SupportActionModeWrapper
 import android.view.View
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_header.*
+import kotlinx.android.synthetic.main.main_tablayout.*
 import java.util.*
 
 
 class MainActivity : FragmentActivity() {
+
+    lateinit var vp:ViewPager;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +26,7 @@ class MainActivity : FragmentActivity() {
 
     /*初始化相关*/
     private fun initView() {
+        vp=findViewById(R.id.vp);
         initFragment()
         initOnClick()
     }
@@ -124,7 +112,7 @@ class MainActivity : FragmentActivity() {
     }
 
     //继承 FragmentPagerAdapter 创建适配器
-    class viewPagerAdapter(fm: FragmentManager?, var list: List<Fragment>) : FragmentPagerAdapter(fm) {
+    class viewPagerAdapter(fm: FragmentManager?, var list: List<Fragment>) : FragmentPagerAdapter(fm!!) {
         override fun getItem(position: Int): Fragment {
             return list.get(position)
         }
